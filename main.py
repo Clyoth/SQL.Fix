@@ -94,21 +94,23 @@ def fixSQL():
 
 	file_names, line_numbers, query_lines = find_query_lines(pathd)
 	a = 0
+	b = 1
 	while a < len(line_numbers):
-		print(f"Fixing File {a}...")
+		print(f"Fixing File {b}...")
 		#answer = gpt_response(query_lines[a])
-		answer = "sheesh"
+		answer = f"sheesh{a}"
 		print("Corrected Vulnerabilities.")
-
+		sleep(1)
 		print("Preparing to implement fixes...")
-
+		sleep(3)
 		with open(f'{file_names[a]}', 'r') as file:
 			lines = file.readlines()
 		lines[int(f'{line_numbers[a]}') - 1] = answer + '\n'
 		with open(f'{file_names[a]}', 'w') as file:
 			file.writelines(lines)
-		print(f"File {a} has been fixed!")
+		print(f"File {b} has been fixed!")
 		a+=1
+		b+=1
 
 
 termcolor.cprint("""
